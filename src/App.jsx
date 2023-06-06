@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import CardComponent from "./CardComponent.jsx";
+import LoginComponent from "./LoginComponent";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -19,8 +20,18 @@ function App() {
     setItems(toUpdateItems);
   };
 
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+
   return (
     <div>
+      <h1>{username}</h1>
+      <LoginComponent
+        visible={!loggedIn}
+        setLoggedIn = {setLoggedIn}
+        setUsername = {setUsername}
+      ></LoginComponent>
+      <div className={loggedIn ? '' : 'hidden'} >
       <input
         onChange={(ev) => {
           let text = ev.target.value;
@@ -44,6 +55,13 @@ function App() {
           content={item}
         ></CardComponent>
       ))}
+      </div>
+      <button
+        onClick={() => {
+          setLoggedIn(false);
+        }}>
+          Log out
+        </button>
     </div>
   );
 }

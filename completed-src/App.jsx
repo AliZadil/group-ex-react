@@ -1,62 +1,67 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import CardComponent from "./CardComponent.jsx";
+import LoginComponent from "./LoginComponent";
 
 function App() {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
 
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+
   const updateItem = (index, text) => {
-    let newItems = [...items];
-    newItems[index] = text;
-    setItems(newItems);
+    let toUpdateItems = [...items];
+    toUpdateItems[index] = text;
+    setItems(toUpdateItems);
   };
 
   const deleteItem = (index) => {
-    let arr = [...items];
-    arr.splice(index, 1);
-    setItems(arr);
+    // needs to delete the item in the items array
+    let toUpdateItems = [...items];
+    toUpdateItems.splice(index, 1);
+    setItems(toUpdateItems);
   };
-
-  // const deleteItem = (index) => {
-  //   setItems(
-  //     items.slice(0, index).concat(items.slice(index + 1, items.length - 1))
-  //   );
-  // };
-
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
-
   return (
     <div>
-      <input
-        onChange={(ev) => {
-          let text = ev.target.value;
-          setInputText(text);
-        }}
-        type="text"
-      />
+      <h1>{username}</h1>
+      <LoginComponent
+        visible={!loggedIn}
+        setLoggedIn={setLoggedIn}
+        setUsername={setUsername}
+      ></LoginComponent>
+      <div className={loggedIn ? "" : "hidden"}>
+        <input
+          onChange={(ev) => {
+            let text = ev.target.value;
+            setInputText(text);
+          }}
+          type="text"
+        />
+        <button
+          onClick={() => {
+            let itemsNew = [...items, inputText];
+            setItems(itemsNew);
+          }}
+        >
+          Add Item
+        </button>
+        {items.map((item, index) => (
+          <CardComponent
+            updateItem={updateItem}
+            deleteItem={deleteItem}
+            index={index}
+            content={item}
+          ></CardComponent>
+        ))}
+      </div>
       <button
         onClick={() => {
-          let itemsNew = [...items, inputText];
-          setItems(itemsNew);
+          setLoggedIn(false);
         }}
       >
-        Add Item
+        Log out
       </button>
-      <br />
-      <br />
-      <br />
-      {items.map((item, i) => (
-        <CardComponent
-          key={"cardcomp" + i}
-          index={i}
-          updateItem={updateItem}
-          deleteItem={deleteItem}
-          content={item}
-        ></CardComponent>
-      ))}
     </div>
   );
 }
