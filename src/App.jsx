@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import CardComponent from "./CardComponent.jsx";
 import LoginComponent from "./LoginComponent";
@@ -15,6 +15,31 @@ function App() {
     toUpdateItems[index] = text;
     setItems(toUpdateItems);
   };
+
+  useEffect(() => {
+    if(items && items.length > 0){
+      localStorage.setItem('ourItems', JSON.stringify(items))
+    };
+  }, [items]);
+
+  useEffect(() => {
+    if(username && username.length > 0){
+      localStorage.setItem('username', JSON.stringify(username))
+    };
+  }, [username]);
+
+  useEffect(() => {
+    let storedJson = localStorage.getItem('ouItems');
+    if(storedJson){
+      let jsonObj = JSON.parse(storedJson);
+      setItems(jsonObj);
+    };
+    let storedUser = localStorage.getItem('username');
+    if(storedUser){
+      setUsername(JSON.parse(storedUser));
+      setLoggedIn(true);
+    };
+  },[]);
 
   const deleteItem = (index) => {
     // needs to delete the item in the items array
