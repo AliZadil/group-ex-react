@@ -29,7 +29,7 @@ function App() {
   }, [username]);
 
   useEffect(() => {
-    let storedJson = localStorage.getItem('ouItems');
+    let storedJson = localStorage.getItem('ourItems');
     if(storedJson){
       let jsonObj = JSON.parse(storedJson);
       setItems(jsonObj);
