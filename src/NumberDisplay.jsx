@@ -28,8 +28,8 @@ function NumberDisplay(){
             <button onClick={() => {
                 setNumber(number +1)
             }}>Increment</button>
-            <button onClick={() => saveToStorage}>Save to storage</button>
-            <button onClick={() => loadFromStorage}>Load from storage</button>
+            <button onClick={() => {saveToStorage}}>Save to storage</button>
+            <button onClick={() => {loadFromStorage}}>Load from storage</button>
         </div>
     )
 
