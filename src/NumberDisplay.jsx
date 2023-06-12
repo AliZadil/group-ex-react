@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { resourceLimits } from "worker_threads";
+
 
 const API_URL = 'https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new'
 
@@ -9,7 +9,7 @@ function NumberDisplay(){
 
     useEffect (() => {
         fetch(API_URL).then(response => response.json()).then((result) => {
-            console.log(result)
+            setNumber(result)
         })
     }, [])
 
