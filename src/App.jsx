@@ -16,11 +16,11 @@ function App() {
         <Route path='*' elemenet={<NotFound />} />
       </Routes>
       <br />
-      <link to={'/'}>Home</link>
+      <Link to={'/'}>Home</Link>
       <br />
-      <link to={'/number'}>Number</link>
+      <Link to={'/number'}>Number</Link>
       <br />
-      <link to={'/card'}>Card</link>
+      <Link to={'/card'}>Card</Link>
     </div>
   );
 }
