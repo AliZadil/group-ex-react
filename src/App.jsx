@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/number' element={<NumberDisplay />} />
         <Route path='/' element={<Welcome />} />
+        <Route path='/number' element={<NumberDisplay />} />
         <Route path="/card" element={<CardComponent content={"Card"} index={0} />} />
         <Route path='*' elemenet={<NotFound />} />
       </Routes>
