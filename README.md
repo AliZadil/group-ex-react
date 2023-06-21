@@ -12,17 +12,11 @@ Run:
 This will start your react app.
 React app will run on **localhost:3000**.
 
-## Start editing the **src/app.jsx** file.
+Start editing the src/app.jsx file.
 
-In index.js, import BrowserRouter, and wrap the <App> component in a <BrowserRouter> component.
-
-In the App component, import Routes, Route and Link from the react-router-dom package.
-
-Create two routes, one for the CardComponent, one for the NumberDisplay component. /card path for the card, /number for the number component.
-
-Create a new component called WelcomeComponent, that just displays a "Welcome!" in a p tag. Route this to the "/" path.
-
-Add Links for each of these routes.
-
-Create another component called NotFound, which will route to the path "*". Just display "Not found" in a p tag in that component.
- If the user goes to any other route than the ones that have a specific component for them, then react router will display that component for them.
+Add a new component called Students.jsx, add it to the routes in App.jsx, as the route "/students". Add a link to navigate to that component.
+Create a StudentDetails form in Students.jsx, that has three input tags for name, age and year. Give a name to each input tag, which we will use together with the form ref.
+Attach a ref to this form.
+Create a button called "Add Student", that will add all these details from the inputs into a list of students, that's a state variable.
+Use .map() to display the list of students on the screen, with their properites like name, age, etc, in p or div tags.
+Add a button to Delete a student from the list of students. Use the student's "index" in order to delete them from the list.
