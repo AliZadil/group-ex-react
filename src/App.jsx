@@ -1,26 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
+
 import "./App.css";
-import { Route, Routes, Link } from 'react-router-dom';
-import NumberDisplay from './NumberDisplay';
-import CardComponent from './CardComponent.jsx';
-import NotFound from './NotFound.jsx';
-import Welcome from './WelcomeComponent.jsx';
+
+import NumberDisplay from "./NumberDisplay";
+import WelcomeComponent from "./WelcomeComponent";
+import CardComponent from "./CardComponent";
+import NotFound from "./NotFound";
+import Students from "./StudentsComponent";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Welcome />} />
-        <Route path='/number' element={<NumberDisplay />} />
-        <Route path="/card" element={<CardComponent content={"Card"} index={0} />} />
-        <Route path='*' elemenet={<NotFound />} />
+        <Route path="/number" element={<NumberDisplay />}></Route>
+        <Route path="/" element={<WelcomeComponent />}></Route>
+        <Route path="/card" element={<CardComponent />}></Route>
+        <Route path="/students" element={<Students />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <br />
-      <Link to={'/'}>Home</Link>
+      <Link to="/">Home</Link>
       <br />
-      <Link to={'/number'}>Number</Link>
+      <Link to="/card">Card</Link>
       <br />
-      <Link to={'/card'}>Card</Link>
+      <Link to="/number">Number</Link>
+      <br />
+      <Link to="/students">Students</Link>
     </div>
   );
 }
